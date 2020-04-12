@@ -30,7 +30,7 @@ import fs = require('fs');
 
 import casual = require("casual");
 import { COMMON_RESOURCES, MessageUtils, LOG_MESSAGE_VERBOSITY } from './messages';
-import { BulkAPI2sf, RESULT_STATUSES } from './bulkapi2sf';
+import { BulkAPI2sf, RESULT_STATUSES } from './bulkApi2Sf';
 const alasql = require("alasql");
 
 MockGenerator.createCustomGenerators(casual);
