@@ -24,6 +24,8 @@ import { CommonUtils } from "../common";
 import SimpleCrypto from "simple-crypto-js";
 import { ScriptField, CONSTANTS } from "../models/index";
 import { MessageUtils, COMMON_RESOURCES, LOG_MESSAGE_VERBOSITY } from "../messages";
+//import { MetadataApiSf, METADATA_TYPES_TO_DEACTIVATE_DURING_DATA_MIGRATION } from "../metadataApiSf";
+import { MetaApiSf, METADATA_TYPES } from "../metaApiSf";
 
 /**
  * Leys form the command resource file
@@ -714,6 +716,13 @@ export class RunCommand {
      * @memberof RunCommand
      */
     async createMigrationJob() {
+        // TEST:
+        let sf: MetaApiSf = new MetaApiSf(this.targetOrg);
+        let names = this.script.objects.map(x => x.name);
+        await sf.readMetadataAsync(names);
+        //await sf.activateOrDeactivateMetadataAsync(sf.objectNameToMetadataItemsMap.get("Case"), false);
+        throw new Error("dddd");
+        
 
         this.logger.infoMinimal(RUN_RESOURCES.newLine);
         this.logger.headerMinimal(RUN_RESOURCES.dataMigrationProcessStarted);
